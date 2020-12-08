@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!--        변수 뿐만 아니라클래스를 임포트하면 클래스 객체를 쓸 수 있음-->
+        <import type="com.example.a30_databind.UserProfile" />
+
+        <variable
+            name="userProfile"
+            type="com.example.a30_databind.UserProfile" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userProfile.name}" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userProfile.phone}" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userProfile.address}" />
+
+        <!--        객체에서 함수 리턴값 받기-->
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{userProfile.genderText}" />
+        <!--        XML에서 함수 넣기-->
+        <TextView
+            android:id="@+id/gender2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{(userProfile.gender==0) ? &quot;남성&quot; : &quot;여성&quot; }" />
+        <!--        속성을 커스텀해서 쓸 수 있음-->
+        <ImageView
+            imageDrawable="@{userProfile.drawable}"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+
+    </LinearLayout>
+</layout>
